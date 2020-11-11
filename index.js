@@ -1,12 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./src/routes");
+require("dotenv").config();
 
 const app = express();
-mongoose.connect(
-  "mongodb+srv://dufernandezz:qevdif4g@cluster0.ocp9p.mongodb.net/Lab?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.database, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 app.use(express.json());
 app.use(routes);
 app.listen(3333);
