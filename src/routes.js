@@ -2,7 +2,6 @@ const { Router } = require("express");
 const CandidateSchema = require("./models/candidate");
 
 const routes = Router();
-
 routes.get("/candidates", async (req, res) => {
   try {
     const candidateList = await CandidateSchema.find({ isDeleted: false });
