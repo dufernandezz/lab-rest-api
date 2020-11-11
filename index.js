@@ -1,15 +1,15 @@
-const express = require("express");
+const app = require("express")();
 const mongoose = require("mongoose");
 const routes = require("./src/routes");
 require("dotenv").config();
 const cors = require("cors");
 
 app.use(cors());
-const app = express();
+
 mongoose.connect(process.env.database, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 app.use(express.json());
 app.use(routes);
-app.listen(3333);
+app.listen(process.env.PORT || 3333);
